@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .blog-container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .blog {
+            margin-bottom: 20px;
+        }
+
+        .blog h1 {
+            color: #007bff;
+        }
+
+        .blog p {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/myBlog">My blogs</a></li>
+            <li><a href="/addBlog">Add blogs</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <h1>Welcome to the home page, {{user.username}}</h1>
+
+    <div class="blog-container">
+        {{#each blogs as |blog|}}
+            {{#if blog.isApproved}}
+                <div class="blog">
+                    <h1>{{blog.title}}</h1>
+                    <p>{{blog.content}}</p>
+                </div>
+            {{/if}}
+        {{/each}}
+    </div>
+</body>
+</html>
